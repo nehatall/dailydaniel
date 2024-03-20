@@ -1,5 +1,5 @@
 // Positive Statements Array
-const inspirationalquote = [
+var inspirationalquote = [
     "You're amazing!",
     "You make me smile every day.",
     "I'm lucky to have you in my life.",
@@ -109,46 +109,13 @@ function fetchRandomImage() {
 }
 
 // Function to play random song
-const SpotifyWebApi = require('spotify-web-api-node');
+<script>index.html</script>;
 
-// Create an instance of SpotifyWebApi with your credentials
-const spotifyApi = new SpotifyWebApi({
-  clientId: '27d4f492e1854ed5b3fec033f1a26fdd',
-  clientSecret: '25823a0399864b2e86adc643a7fc1b43'
-});
-
-// Retrieve an access token
-spotifyApi.clientCredentialsGrant().then(
-  function(data) {
-    // Set the access token
-    spotifyApi.setAccessToken(data.body['access_token']);
-    
-    // Get playlist tracks
-    spotifyApi.getPlaylistTracks('Daniel').then(
-      function(data) {
-        // Extract an array of track objects from the playlist
-        const tracks = data.body.items.map(item => item.track);
-
-        // Select a random track
-        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-
-        // Display the random track information (title, artist, etc.)
-        console.log('Random Track:', randomTrack);
-      },
-      function(err) {
-        console.log('Error retrieving playlist tracks', err);
-      }
-    );
-  },
-  function(err) {
-    console.log('Error retrieving access token', err);
-  }
-);
 
 
 // Call the functions on page load
 window.onload = function () {
-    displayRandomStatement();
-    displayRandomSpaceImage();
+    displayinspirationalquote();
+    fetchRandomImage();
     displayRandomSong();
 };
