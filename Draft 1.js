@@ -74,22 +74,6 @@ const inspirationalquote = [
     "Real adventure is defined best as a journey from which you may not come back alive, and certainly not as the same person. (Yvon Chouinard)",
 ];
 
-// Space Images Array
-const spaceImages = [
-    "image1.jpg",
-    "image2.jpg",
-    "image3.jpg",
-    // Add more space images
-];
-
-// Songs Array
-const songs = [
-    { name: "Song 1", url: "song1.mp3" },
-    { name: "Song 2", url: "song2.mp3" },
-    { name: "Song 3", url: "song3.mp3" },
-    // Add more songs
-];
-
 // Function to display random positive statement
 function displayinspirationalquote() {
     const randomIndex = Math.floor(Math.random() * inspirationalquote.length);
