@@ -12,6 +12,43 @@
         <div id="inspirationalquote"></div>
         <img src="https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/imagename.jpg" alt="Space Image">
         <button onclick="playTodaysSong()">Today's Song</button>
+
+// Create an instance of SpotifyWebApi with your credentials
+const spotifyApi = new SpotifyWebApi({
+  clientId: '27d4f492e1854ed5b3fec033f1a26fdd',
+  clientSecret: '25823a0399864b2e86adc643a7fc1b43'
+});
+
+// Retrieve an access token
+spotifyApi.clientCredentialsGrant().then(
+  function(data) {
+    // Set the access token
+    spotifyApi.setAccessToken(data.body['access_token']);
+    
+    // Get playlist tracks
+    spotifyApi.getPlaylistTracks('Daniel').then(
+      function(data) {
+        // Extract an array of track objects from the playlist
+        const tracks = data.body.items.map(item => item.track);
+
+        // Select a random track
+        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+
+        // Display the random track information (title, artist, etc.)
+        console.log('Random Track:', randomTrack);
+      },
+      function(err) {
+        console.log('Error retrieving playlist tracks', err);
+      }
+    );
+  },
+  function(err) {
+    console.log('Error retrieving access token', err);
+  }
+);
+
+
+        
     </div>
     <script src="Draft 1.js"></script>
 </body>
