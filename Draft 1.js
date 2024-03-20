@@ -81,25 +81,32 @@ function displayinspirationalquote() {
 }
 
 // Function to display random space image
-function displayRandomSpaceImage() {
-    const fs = require('fs');
-    const path = require('path');
-    const spaceImageDir = './spaceImage';
-
-    fs.readdir(spaceImageDir, (err, files) => {
-        if (err) {
-            console.error('Error reading space image directory:', err);
-            return;
-        }
-
-        const randomIndex = Math.floor(Math.random() * files.length);
-        const randomImage = files[randomIndex];
-        const imagePath = path.join(spaceImageDir, randomImage);
-
-        document.getElementById('spaceImage').src = imagePath;
-    });
+/ Function to fetch a random image from the folder in the GitHub repository
+function fetchRandomImage() {
+    // URL to the folder containing the images in your GitHub repository
+    const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages';
+    
+    // Fetch the list of files in the folder
+    fetch(folderUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Extract the filenames from the response data
+            const imageFiles = data.map(file => file.name);
+            
+            // Select a random filename from the list
+            const randomIndex = Math.floor(Math.random() * imageFiles.length);
+            const randomImage = imageFiles[randomIndex];
+            
+            // Construct the URL to the randomly selected image
+            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`;
+            
+            // Set the source of the image element in your HTML to the constructed URL
+            document.getElementById('spaceImage').src = imageUrl;
+        })
+        .catch(error => {
+            console.error('Error fetching random image:', error);
+        });
 }
-
 
 // Function to play random song
 const SpotifyWebApi = require('spotify-web-api-node');
