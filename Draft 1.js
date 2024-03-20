@@ -101,7 +101,7 @@ function fetchRandomImage() {
             const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`;
             
             // Set the source of the image element in your HTML to the constructed URL
-            document.getElementById('spaceImage').src = imageUrl;
+            document.getElementById('spaceImages').src = imageUrl;
         })
         .catch(error => {
             console.error('Error fetching random image:', error);
