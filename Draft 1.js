@@ -75,7 +75,7 @@ var inspirationalquote = [
 ];
 
 // Function to display random positive statement
-function displayinspirationalquote() {
+function displayInspirationalQuote() {
     const randomIndex = Math.floor(Math.random() * inspirationalquote.length);
     document.getElementById('inspirationalquote').innerText = inspirationalquote[randomIndex];
 }
