@@ -10,7 +10,7 @@ var inspirationalquote = [
     "The universe is a symphony of electromagnetic radiation. (Carl Sagan)",
     "I don't want to believe in conspiracies, but it's hard not to. (Carl Sagan)",
     "We are a way for the cosmos to know itself. (Carl Sagan)",
-    "Somewhere, something incredible is waiting to be known. (Carl Sagan)", 
+    "Somewhere, something incredible is waiting to be known. (Carl Sagan)",
     "The more we know about the universe, the more fascinating it seems. (Carl Sagan)",
     "I have a fascination with the human ability to tell stories. (Carl Sagan)",
     "We are made of star-stuff. (Carl Sagan)",
@@ -40,8 +40,8 @@ var inspirationalquote = [
     "We need to be working together to solve the problems of the world. (Mae Jemison)",
     "Science is a way of thinking, a way of approaching the world. (Mae Jemison)",
     "The universe is a vast and amazing place. (Mae Jemison)",
-    "The Earth is a beautiful and infinite tapestry of life, and we must protect every thread. (David Attenborough)",  
-    "No single creature is more important than another. All play a part in the intricate balance of life.(David Attenborough)", 
+    "The Earth is a beautiful and infinite tapestry of life, and we must protect every thread. (David Attenborough)",
+    "No single creature is more important than another. All play a part in the intricate balance of life.(David Attenborough)",
     "We have a moral responsibility to deal with the mess we have created. (David Attenborough)",
     "The natural world is not a series of freak shows. It is a story of exquisite complexity and beauty. (David Attenborough)",
     "The greatest threat to our planet is the belief that someone else will fix it. (David Attenborough)",
@@ -81,25 +81,25 @@ function displayInspirationalQuote() {
 }
 
 // Function to display random space image
-/ Function to fetch a random image from the folder in the GitHub repository
+// Function to fetch a random image from the folder in the GitHub repository
 function fetchRandomImage() {
     // URL to the folder containing the images in your GitHub repository
     const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages';
-    
+
     // Fetch the list of files in the folder
     fetch(folderUrl)
         .then(response => response.json())
         .then(data => {
             // Extract the filenames from the response data
             const imageFiles = data.map(file => file.name);
-            
+
             // Select a random filename from the list
             const randomIndex = Math.floor(Math.random() * imageFiles.length);
             const randomImage = imageFiles[randomIndex];
-            
+
             // Construct the URL to the randomly selected image
-            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`;
-            
+            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`; //double check this url is right
+
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
         })
@@ -109,13 +109,13 @@ function fetchRandomImage() {
 }
 
 // Function to play random song
-<script>index.html</script>;
+//<script>index.html</script>; "script" isn't actually javascript, though this might be a placeholder you put in the html file to indicate where you want to put the actual function so like idk what you want to do with this
 
 
 
 // Call the functions on page load
 window.onload = function () {
-    displayinspirationalquote();
+    displayInspirationalQuote(); // Corrected the function name (was originally mispelled)
     fetchRandomImage();
-    displayRandomSong();
+    displayRandomSong(); // this hasn't been defined yet
 };
