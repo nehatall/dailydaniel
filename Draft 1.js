@@ -84,7 +84,7 @@ function displayInspirationalQuote() {
 // Function to fetch a random image from the folder in the GitHub repository
 function fetchRandomImage() {
     // URL to the folder containing the images in your GitHub repository
-    const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages';
+    const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages/spaceImages';
 
     // Fetch the list of files in the folder
     fetch(folderUrl)
@@ -98,7 +98,7 @@ function fetchRandomImage() {
             const randomImage = imageFiles[randomIndex];
 
             // Construct the URL to the randomly selected image
-            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`; //double check this url is right
+            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/spaceImages/${randomImage}`; //double check this url is right
 
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
