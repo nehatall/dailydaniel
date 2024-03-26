@@ -80,8 +80,7 @@ function displayInspirationalQuote() {
     document.getElementById('inspirationalquote').innerText = inspirationalquote[randomIndex];
 }
 
-// Function to display random space image
-// Function to fetch a random image from the folder in the GitHub repository
+// Function to fetch a random space image from the folder in the GitHub repository
 function fetchRandomImage() {
     // URL to the folder containing the images in your GitHub repository
     const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages/spaceImages';
@@ -110,58 +109,51 @@ function fetchRandomImage() {
 
 
 // Function to play random song
- const SpotifyWebApi = require('spotify-web-api-node');
-const request = require('request');
+function playTodaysSong() {
+    // Get playlist tracks
+    spotifyApi.getPlaylistTracks('Daniel').then(
+        function(data) {
+            // Extract an array of track objects from the playlist
+            const tracks = data.body.items.map(item => item.track);
 
-// Create an instance of SpotifyWebApi with your credentials
-const spotifyApi = new SpotifyWebApi({
+            // Select a random track
+            const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+
+            // Play the selected track
+            // Example: You can trigger playback using an HTML audio element or a custom player library
+            console.log('Playing Random Track:', randomTrack);
+        },
+        function(err) {
+            console.log('Error retrieving playlist tracks', err);
+        }
+    );
+}
+
+// Initialize SpotifyWebApi with your credentials
+var spotifyApi = new SpotifyWebApi({
     clientId: '27d4f492e1854ed5b3fec033f1a26fdd',
     clientSecret: '25823a0399864b2e86adc643a7fc1b43'
 });
 
-// Define your client_id and client_secret
-const client_id = '27d4f492e1854ed5b3fec033f1a26fdd';
-const client_secret = '25823a0399864b2e86adc643a7fc1b43';
-
-// Set up authorization options
-const authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
-    headers: {
-        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+// Authenticate SpotifyWebApi and call playTodaysSong when ready
+spotifyApi.clientCredentialsGrant().then(
+    function(data) {
+        // Set the access token
+        spotifyApi.setAccessToken(data.body['access_token']);
+        
+        // Now that authentication is done, you can call playTodaysSong
+        playTodaysSong();
     },
-    form: {
-        grant_type: 'client_credentials'
-    },
-    json: true
-};
-
-// Retrieve an access token using client credentials grant
-request.post(authOptions, function(error, response, body) {
-    if (!error && response.statusCode === 200) {
-        const token = body.access_token;
-        // Set the access token for SpotifyWebApi
-        spotifyApi.setAccessToken(token);
-
-        // Get playlist tracks
-        spotifyApi.getPlaylistTracks('Daniel').then(
-            function(data) {
-                // Extract an array of track objects from the playlist
-                const tracks = data.body.items.map(item => item.track);
-
-                // Select a random track
-                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-
-                // Display the random track information (title, artist, etc.)
-                console.log('Random Track:', randomTrack);
-            },
-            function(err) {
-                console.log('Error retrieving playlist tracks', err);
-            }
-        );
-    } else {
-        console.log('Error retrieving access token', error);
+    function(err) {
+        console.log('Error authenticating SpotifyWebApi', err);
     }
-});
+);
+
+// Call the functions on page load
+window.onload = function() {
+    displayInspirationalQuote();
+    fetchRandomImage();
+};
 
 
 
