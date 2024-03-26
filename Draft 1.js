@@ -48,7 +48,6 @@ var inspirationalQuotes = [
     "Across the continents, the creatures of the Earth are in a desperate fight for survival. (David Attenborough)",
     "In the animal kingdom, the only way to get ahead is to get along. (David Attenborough)",
     "The intelligence of some of these creatures is simply beyond our imagination. (David Attenborough)",
-    "The natural world is not something we can ignore. We are part of it, and it is part of
     "The natural world is not something we can ignore. We are part of it, and it is part of us. (David Attenborough)",
     "The wealth of the world lies not in material possessions, but in the living world. (David Attenborough)",
     "We are a privileged species, living on an amazing planet. It's time we started acting like it. (David Attenborough)",
