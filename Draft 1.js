@@ -42,7 +42,58 @@ function fetchRandomImage() {
 
 
 // Function to play random song
-//<script>index.html</script>; "script" isn't actually javascript, though this might be a placeholder you put in the html file to indicate where you want to put the actual function so like idk what you want to do with this
+ const SpotifyWebApi = require('spotify-web-api-node');
+const request = require('request');
+
+// Create an instance of SpotifyWebApi with your credentials
+const spotifyApi = new SpotifyWebApi({
+    clientId: '27d4f492e1854ed5b3fec033f1a26fdd',
+    clientSecret: '25823a0399864b2e86adc643a7fc1b43'
+});
+
+// Define your client_id and client_secret
+const client_id = '27d4f492e1854ed5b3fec033f1a26fdd';
+const client_secret = '25823a0399864b2e86adc643a7fc1b43';
+
+// Set up authorization options
+const authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: {
+        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+    },
+    form: {
+        grant_type: 'client_credentials'
+    },
+    json: true
+};
+
+// Retrieve an access token using client credentials grant
+request.post(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+        const token = body.access_token;
+        // Set the access token for SpotifyWebApi
+        spotifyApi.setAccessToken(token);
+
+        // Get playlist tracks
+        spotifyApi.getPlaylistTracks('Daniel').then(
+            function(data) {
+                // Extract an array of track objects from the playlist
+                const tracks = data.body.items.map(item => item.track);
+
+                // Select a random track
+                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+
+                // Display the random track information (title, artist, etc.)
+                console.log('Random Track:', randomTrack);
+            },
+            function(err) {
+                console.log('Error retrieving playlist tracks', err);
+            }
+        );
+    } else {
+        console.log('Error retrieving access token', error);
+    }
+});
 
 
 
