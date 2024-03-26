@@ -77,7 +77,7 @@ var inspirationalQuotes = [
 // Function to display inspirational quote 
 function displayInspirationalQuote() {
     const randomIndex = Math.floor(Math.random() * inspirationalQuotes.length);
-    document.getElementById('inspirationalquote').innerText = inspirationalQuotes[randomIndex];
+    document.getElementById('inspirationalQuotes').innerText = inspirationalQuotes[randomIndex];
 }
 
 // Function to fetch a random space image from the folder in the GitHub repository
