@@ -150,14 +150,6 @@ spotifyApi.clientCredentialsGrant().then(
 );
 
 // Call the functions on page load
-window.onload = function() {
-    displayInspirationalQuote();
-    fetchRandomImage();
-};
-
-
-
-// Call the functions on page load
 window.onload = function () {
     displayInspirationalQuote(); // Corrected the function name (was originally mispelled)
     fetchRandomImage();
