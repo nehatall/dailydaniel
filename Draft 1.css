@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Serif;
     text-align: center;
 }
 
@@ -18,12 +18,12 @@ button {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #f8bcee;
+    background-color: #E7FBF9;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #87c9e0;
+    background-color: #15665F;
 }
