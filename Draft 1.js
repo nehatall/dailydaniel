@@ -1,5 +1,5 @@
 // Positive Statements Array
-var inspirationalQuotes = [
+var inspirationalquote = [
     "You're amazing!",
     "You make me smile every day.",
     "I'm lucky to have you in my life.",
@@ -10,7 +10,7 @@ var inspirationalQuotes = [
     "The universe is a symphony of electromagnetic radiation. (Carl Sagan)",
     "I don't want to believe in conspiracies, but it's hard not to. (Carl Sagan)",
     "We are a way for the cosmos to know itself. (Carl Sagan)",
-    "Somewhere, something incredible is waiting to be known. (Carl Sagan)", 
+    "Somewhere, something incredible is waiting to be known. (Carl Sagan)",
     "The more we know about the universe, the more fascinating it seems. (Carl Sagan)",
     "I have a fascination with the human ability to tell stories. (Carl Sagan)",
     "We are made of star-stuff. (Carl Sagan)",
@@ -40,14 +40,14 @@ var inspirationalQuotes = [
     "We need to be working together to solve the problems of the world. (Mae Jemison)",
     "Science is a way of thinking, a way of approaching the world. (Mae Jemison)",
     "The universe is a vast and amazing place. (Mae Jemison)",
-    "The Earth is a beautiful and infinite tapestry of life, and we must protect every thread. (David Attenborough)",  
-    "No single creature is more important than another. All play a part in the intricate balance of life. (David Attenborough)", 
+    "The Earth is a beautiful and infinite tapestry of life, and we must protect every thread. (David Attenborough)",
+    "No single creature is more important than another. All play a part in the intricate balance of life.(David Attenborough)",
     "We have a moral responsibility to deal with the mess we have created. (David Attenborough)",
     "The natural world is not a series of freak shows. It is a story of exquisite complexity and beauty. (David Attenborough)",
     "The greatest threat to our planet is the belief that someone else will fix it. (David Attenborough)",
     "Across the continents, the creatures of the Earth are in a desperate fight for survival. (David Attenborough)",
     "In the animal kingdom, the only way to get ahead is to get along. (David Attenborough)",
-    "The intelligence of some of these creatures is simply beyond our imagination. (David Attenborough)",
+    "The intelligence of some of these creatures is simply beyond our imagination.(David Attenborough)",
     "The natural world is not something we can ignore. We are part of it, and it is part of us. (David Attenborough)",
     "The wealth of the world lies not in material possessions, but in the living world. (David Attenborough)",
     "We are a privileged species, living on an amazing planet. It's time we started acting like it. (David Attenborough)",
@@ -55,7 +55,7 @@ var inspirationalQuotes = [
     "The future of life on Earth depends on our ability to coexist with nature, not dominate it. (David Attenborough)",
     "The more we learn about the natural world, the more we appreciate its wonders. (David Attenborough)",
     "Nature never gives up on life. (David Attenborough)",
-    "The creativity of life is its most astonishing characteristic. (David Attenborough)",
+    "The creativity of life is its most astonishing characteristic.(David Attenborough)",
     "The natural world is a constant source of inspiration. (David Attenborough)",
     "We have the power to change the course of history. Let's use it wisely. (David Attenborough)",
     "The wonder of life never ceases to amaze me. (David Attenborough)",
@@ -74,16 +74,17 @@ var inspirationalQuotes = [
     "Real adventure is defined best as a journey from which you may not come back alive, and certainly not as the same person. (Yvon Chouinard)",
 ];
 
-// Function to display inspirational quote 
+// Function to display random positive statement
 function displayInspirationalQuote() {
-    const randomIndex = Math.floor(Math.random() * inspirationalQuotes.length);
-    document.getElementById('inspirationalQuotes').innerText = inspirationalQuotes[randomIndex];
+    const randomIndex = Math.floor(Math.random() * inspirationalquote.length);
+    document.getElementById('inspirationalquote').innerText = inspirationalquote[randomIndex];
 }
 
-// Function to fetch a random space image from the folder in the GitHub repository
+// Function to display random space image
+// Function to fetch a random image from the folder in the GitHub repository
 function fetchRandomImage() {
     // URL to the folder containing the images in your GitHub repository
-    const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages/spaceImages';
+    const folderUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages';
 
     // Fetch the list of files in the folder
     fetch(folderUrl)
@@ -97,7 +98,7 @@ function fetchRandomImage() {
             const randomImage = imageFiles[randomIndex];
 
             // Construct the URL to the randomly selected image
-            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/spaceImages/${randomImage}`;
+            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`; //double check this url is right
 
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
@@ -108,42 +109,14 @@ function fetchRandomImage() {
 }
 
 // Function to play random song
-spotifyApi.getPlaylistTracks('Daniel').then(
-    function(data) {
-        // Extract an array of track objects from the playlist
-        const tracks = data.body.items.map(item => item.track);
+//<script>index.html</script>; "script" isn't actually javascript, though this might be a placeholder you put in the html file to indicate where you want to put the actual function so like idk what you want to do with this
 
-        // Select a random track
-        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
 
-        // Play the selected track
-        // Example: You can trigger playback using an HTML audio element or a custom player library
-        console.log('Playing Random Track:', randomTrack);
-    },
-    function(err) {
-        console.log('Error retrieving playlist tracks', err);
-    }
-);
 
-// Initialize SpotifyWebApi with your credentials
-var spotifyApi = new SpotifyWebApi({
-    clientId: '27d4f492e1854ed5b3fec033f1a26fdd',
-    clientSecret: '25823a0399864b2e86adc643a7fc1b43'
-});
+// Call the functions on page load
+window.onload = function () {
+    displayInspirationalQuote(); // Corrected the function name (was originally mispelled)
+    fetchRandomImage();
+    displayRandomSong(); // this hasn't been defined yet
+};
 
-// Authenticate SpotifyWebApi and call playTodaysSong when ready
-spotifyApi.clientCredentialsGrant().then(
-    function(data) {
-        // Set the access token
-        spotifyApi.setAccessToken(data.body['access_token']);
-
-        // Call both functions when the window loads
-        window.onload = function() {
-            displayInspirationalQuote();
-            fetchRandomImage();
-        };
-    },
-    function(err) {
-        console.log('Error authenticating SpotifyWebApi', err);
-    }
-);
