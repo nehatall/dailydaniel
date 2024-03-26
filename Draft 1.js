@@ -98,7 +98,7 @@ function fetchRandomImage() {
             const randomImage = imageFiles[randomIndex];
 
             // Construct the URL to the randomly selected image
-            const imageUrl = `https://raw.githubusercontent.com/nehatall/dailydaniel/main/spaceImages/${randomImage}`; //double check this url is right
+            const imageUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages/spaceImages'
 
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
