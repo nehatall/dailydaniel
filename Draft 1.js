@@ -91,13 +91,16 @@ function fetchRandomImage() {
         .then(response => response.json())
         .then(data => {
             // Extract the filenames from the response data
-            const imageFiles = data.map(file => ({file.name, download_url:file.download_url}));
+            const imageFiles = data.map(file => ({name: file.name, downloadUrl: file.download_url}));
 
             // Select a random filename from the list
-            const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length];
+            const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length)];
 
             // Construct the URL to the randomly selected image
             const imageUrl = randomImage.downloadUrl;
+
+            // Log the constructed image URL to the console
+            console.log('Image URL:', imageUrl);
             
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
