@@ -90,6 +90,8 @@ function fetchRandomImage() {
     fetch(folderUrl)
         .then(response => response.json())
         .then(data => {
+             // Log the entire data object to inspect its structure
+            console.log('Data from GitHub API:', data);
             // Extract the filenames from the response data
             const imageFiles = data.map(file => ({name: file.name, downloadUrl: file.download_url}));
 
