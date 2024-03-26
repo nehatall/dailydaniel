@@ -91,15 +91,14 @@ function fetchRandomImage() {
         .then(response => response.json())
         .then(data => {
             // Extract the filenames from the response data
-            const imageFiles = data.map(file => file.name);
+            const imageFiles = data.map(file => ({file.name, download_url:file.download_url}));
 
             // Select a random filename from the list
-            const randomIndex = Math.floor(Math.random() * imageFiles.length);
-            const randomImage = imageFiles[randomIndex];
+            const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length];
 
             // Construct the URL to the randomly selected image
-            const imageUrl = 'https://api.github.com/repos/nehatall/dailydaniel/contents/spaceImages/spaceImages'; //double check this url is right
-
+            const imageUrl = randomImage.downloadUrl;
+            
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
 
