@@ -102,6 +102,7 @@ function fetchRandomImage() {
 
             // Set the source of the image element in your HTML to the constructed URL
             document.getElementById('spaceImages').src = imageUrl;
+
         })
         .catch(error => {
             console.error('Error fetching random image:', error);
