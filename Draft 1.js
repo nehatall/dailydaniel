@@ -75,11 +75,15 @@ var inspirationalQuotes = [
     "Real adventure is defined best as a journey from which you may not come back alive, and certainly not as the same person. (Yvon Chouinard)",
 ];
 
-// Function to display random positive statement
-function displayInspirationalQuote() {
+// Function to display inspirational quote 
+function displayInspirationalQuote() 
+{
     const randomIndex = Math.floor(Math.random() * inspirationalQuotes.length);
     document.getElementById('inspirationalquote').innerText = inspirationalQuotes[randomIndex];
 }
+window.onload = function() {
+    displayInspirationalQuote();
+};
 
 // Function to fetch a random space image from the folder in the GitHub repository
 function fetchRandomImage() {
@@ -107,7 +111,9 @@ function fetchRandomImage() {
             console.error('Error fetching random image:', error);
         });
 }
-
+window.onload = function() {
+    fetchRandomImage();
+};
 
 // Function to play random song
     spotifyApi.getPlaylistTracks('Daniel').then(
