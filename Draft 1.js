@@ -110,8 +110,6 @@ function fetchRandomImage() {
 
 
 // Function to play random song
-function playTodaysSong() {
-    // Get playlist tracks
     spotifyApi.getPlaylistTracks('Daniel').then(
         function(data) {
             // Extract an array of track objects from the playlist
@@ -142,8 +140,6 @@ spotifyApi.clientCredentialsGrant().then(
         // Set the access token
         spotifyApi.setAccessToken(data.body['access_token']);
         
-        // Now that authentication is done, you can call playTodaysSong
-        playTodaysSong();
     },
     function(err) {
         console.log('Error authenticating SpotifyWebApi', err);
