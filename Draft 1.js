@@ -113,15 +113,9 @@ function fetchRandomImage() {
         });
 }
 
-// Function to play random song
-//<script>index.html</script>; "script" isn't actually javascript, though this might be a placeholder you put in the html file to indicate where you want to put the actual function so like idk what you want to do with this
-
-
-
 // Call the functions on page load
 window.onload = function () {
     displayInspirationalQuote(); // Corrected the function name (was originally mispelled)
     fetchRandomImage();
-    displayRandomSong(); // this hasn't been defined yet
 };
 
