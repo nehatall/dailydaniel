@@ -76,14 +76,10 @@ var inspirationalQuotes = [
 ];
 
 // Function to display inspirational quote 
-function displayInspirationalQuote() 
-{
+function displayInspirationalQuote() {
     const randomIndex = Math.floor(Math.random() * inspirationalQuotes.length);
     document.getElementById('inspirationalquote').innerText = inspirationalQuotes[randomIndex];
 }
-window.onload = function() {
-    displayInspirationalQuote();
-};
 
 // Function to fetch a random space image from the folder in the GitHub repository
 function fetchRandomImage() {
@@ -111,28 +107,24 @@ function fetchRandomImage() {
             console.error('Error fetching random image:', error);
         });
 }
-window.onload = function() {
-    fetchRandomImage();
-};
 
 // Function to play random song
-    spotifyApi.getPlaylistTracks('Daniel').then(
-        function(data) {
-            // Extract an array of track objects from the playlist
-            const tracks = data.body.items.map(item => item.track);
+spotifyApi.getPlaylistTracks('Daniel').then(
+    function(data) {
+        // Extract an array of track objects from the playlist
+        const tracks = data.body.items.map(item => item.track);
 
-            // Select a random track
-            const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+        // Select a random track
+        const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
 
-            // Play the selected track
-            // Example: You can trigger playback using an HTML audio element or a custom player library
-            console.log('Playing Random Track:', randomTrack);
-        },
-        function(err) {
-            console.log('Error retrieving playlist tracks', err);
-        }
-    );
-}
+        // Play the selected track
+        // Example: You can trigger playback using an HTML audio element or a custom player library
+        console.log('Playing Random Track:', randomTrack);
+    },
+    function(err) {
+        console.log('Error retrieving playlist tracks', err);
+    }
+);
 
 // Initialize SpotifyWebApi with your credentials
 var spotifyApi = new SpotifyWebApi({
@@ -145,7 +137,12 @@ spotifyApi.clientCredentialsGrant().then(
     function(data) {
         // Set the access token
         spotifyApi.setAccessToken(data.body['access_token']);
-        
+
+        // Call both functions when the window loads
+        window.onload = function() {
+            displayInspirationalQuote();
+            fetchRandomImage();
+        };
     },
     function(err) {
         console.log('Error authenticating SpotifyWebApi', err);
