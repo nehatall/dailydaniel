@@ -1,5 +1,5 @@
 // Positive Statements Array
-var inspirationalquote = [
+var inspirationalQuotes = [
     "You're amazing!",
     "You make me smile every day.",
     "I'm lucky to have you in my life.",
@@ -41,13 +41,14 @@ var inspirationalquote = [
     "Science is a way of thinking, a way of approaching the world. (Mae Jemison)",
     "The universe is a vast and amazing place. (Mae Jemison)",
     "The Earth is a beautiful and infinite tapestry of life, and we must protect every thread. (David Attenborough)",  
-    "No single creature is more important than another. All play a part in the intricate balance of life.(David Attenborough)", 
+    "No single creature is more important than another. All play a part in the intricate balance of life. (David Attenborough)", 
     "We have a moral responsibility to deal with the mess we have created. (David Attenborough)",
     "The natural world is not a series of freak shows. It is a story of exquisite complexity and beauty. (David Attenborough)",
     "The greatest threat to our planet is the belief that someone else will fix it. (David Attenborough)",
     "Across the continents, the creatures of the Earth are in a desperate fight for survival. (David Attenborough)",
     "In the animal kingdom, the only way to get ahead is to get along. (David Attenborough)",
-    "The intelligence of some of these creatures is simply beyond our imagination.(David Attenborough)",
+    "The intelligence of some of these creatures is simply beyond our imagination. (David Attenborough)",
+    "The natural world is not something we can ignore. We are part of it, and it is part of
     "The natural world is not something we can ignore. We are part of it, and it is part of us. (David Attenborough)",
     "The wealth of the world lies not in material possessions, but in the living world. (David Attenborough)",
     "We are a privileged species, living on an amazing planet. It's time we started acting like it. (David Attenborough)",
@@ -55,7 +56,7 @@ var inspirationalquote = [
     "The future of life on Earth depends on our ability to coexist with nature, not dominate it. (David Attenborough)",
     "The more we learn about the natural world, the more we appreciate its wonders. (David Attenborough)",
     "Nature never gives up on life. (David Attenborough)",
-    "The creativity of life is its most astonishing characteristic.(David Attenborough)",
+    "The creativity of life is its most astonishing characteristic. (David Attenborough)",
     "The natural world is a constant source of inspiration. (David Attenborough)",
     "We have the power to change the course of history. Let's use it wisely. (David Attenborough)",
     "The wonder of life never ceases to amaze me. (David Attenborough)",
@@ -76,8 +77,8 @@ var inspirationalquote = [
 
 // Function to display random positive statement
 function displayInspirationalQuote() {
-    const randomIndex = Math.floor(Math.random() * inspirationalquote.length);
-    document.getElementById('inspirationalquote').innerText = inspirationalquote[randomIndex];
+    const randomIndex = Math.floor(Math.random() * inspirationalQuotes.length);
+    document.getElementById('inspirationalquote').innerText = inspirationalQuotes[randomIndex];
 }
 
 // Function to fetch a random space image from the folder in the GitHub repository
@@ -148,10 +149,3 @@ spotifyApi.clientCredentialsGrant().then(
         console.log('Error authenticating SpotifyWebApi', err);
     }
 );
-
-// Call the functions on page load
-window.onload = function () {
-    displayInspirationalQuote(); // Corrected the function name (was originally mispelled)
-    fetchRandomImage();
-    displayRandomSong(); // this hasn't been defined yet
-};
